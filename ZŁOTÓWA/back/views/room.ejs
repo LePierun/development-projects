@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <title>Pokój: <%= room.R_Name %></title>
+  <link rel="stylesheet" href="/styles.css">
+</head>
+
+<body class="room-page">
+<%- include("partials/header") %>
+<div class="page-layout">
+  <div class="left-column"></div>
+
+  <div class="rooms-list">
+    <h2><%= room.R_Name %></h2>
+
+    <ul class="rooms-ul"> 
+  <% if (!users || users.length === 0) { %>
+      <li class="room-item">Nie masz żadnych znajomych</li>
+  <% } else { %>
+      <% users.forEach(user => { %>
+          <li class="room-item">
+
+            <span class="user-name"><%= user.U_Name %></span> —
+
+            <% if (user.balance > 0) { %>
+              <span class="balance positive">
+                +<%= user.balance.toFixed(2) %> zł
+              </span>
+
+            <% } else if (user.balance < 0) { %>
+              <span class="balance negative">
+                -<%= Math.abs(user.balance).toFixed(2) %> zł
+              </span>
+
+            <% } else { %>
+              <span class="balance neutral">0.00 zł</span>
+            <% } %>
+
+          </li>
+      <% }); %>
+  <% } %>
+</ul>
+
+    <button class="create-room-btn" onclick="openPopup()">+ Nowa transakcja</button>
+    <a href="/room/<%= room.R_ID_Room %>/transactions">Historia</a>
+    <button class="add-user-btn" onclick="openPopup2()">Dodaj użytkownika</button>
+  </div>
+  
+</div>
+
+
+<!-- ------------ TŁO POPUPA (ciemne) ------------ -->
+<div id="popup-bg" onclick="closePopup()" style="display:none;"></div>
+
+<!-- ------------ OKNO POPUPA ------------ -->
+<div class="trans_pop" id="transPop" style="display:none;">
+
+  <h2>Dodaj transakcję</h2>
+
+  <form class="trans-form" action="/new_transaction/<%= room.R_ID_Room %>" method="POST">
+
+    <div class="user-list">
+        <% users.forEach(user => { %>
+        <label class="user-check">
+          <span><%= user.U_Name %></span>
+          <input type="checkbox" name="users" value="<%= user.U_ID_User %>">
+        </label>
+        <% }) %>
+    </div>
+
+    <input class="pixel-input" type="number" name="amount" placeholder="Kwota" required>
+    <input class="pixel-input" type="text" name="desc" placeholder="Opis" required>
+
+    <button class="pixel-btn" type="submit">Zapisz</button>
+</form>
+
+
+</div>
+
+<!-- ------------ OKNO 2 POPUPA ------------ -->
+<div class="trans_pop" id="userPop" style="display:none;">
+  <h2>Dodaj Użytkownika</h2>
+  <form class="trans-form" action="/new_user_in_room/<%= room.R_ID_Room %>" method="POST">
+    <br>
+    <input class="pixel-input" type="text" name="name" placeholder="Nazwa użytkownika" required>
+    <button class="pixel-btn" type="submit">Zapisz</button>
+</form>
+
+
+</div>
+
+
+<!-- ------------ SKRYPT POPUPA ------------ -->
+<script>
+function openPopup() {
+  document.getElementById("transPop").style.display = "block";
+  document.getElementById("popup-bg").style.display = "block";
+}
+
+function openPopup2() {
+  document.getElementById("userPop").style.display = "block";
+  document.getElementById("popup-bg").style.display = "block";
+}
+
+function closePopup() {
+  document.getElementById("transPop").style.display = "none";
+  document.getElementById("popup-bg").style.display = "none";
+  document.getElementById("userPop").style.display = "none";
+}
+
+
+</script>
+
+
+</body>
+</html>

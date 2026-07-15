@@ -1,0 +1,36 @@
+<head>
+    <meta charset="UTF-8">
+    <title>Logowanie</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>
+<%- include("partials/header") %>
+<div class="page-layout">
+
+    <div class="left-column"></div>
+
+    <div class="rooms-list">
+        <h2>Moje pokoje:</h2>
+
+        <ul class="rooms-ul">
+            <% if (!rooms || rooms.length === 0) { %>
+                <li class="room-item">Nie masz żadnych pokoi</li>
+            <% } else { %>
+                <% rooms.forEach(room => { %>
+                    <a href="/room/<%= room.R_ID_Room %>"><li class="room-item">
+                        <% if (room.U_ID_Host === user.id) { %> <i class="fa-solid fa-crown pixel-crown"></i> <% } %> <%= room.R_Name %>
+                    </li></a>
+                <% }); %>
+            <% } %>
+        </ul>
+    </div>
+
+    <div class="right-column">
+        <a href="/form_room" class="create-room-btn">+ Stwórz pokój</a>
+    </div>
+
+</div>
+
+</body>
+

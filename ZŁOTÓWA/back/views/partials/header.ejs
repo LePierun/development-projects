@@ -1,0 +1,20 @@
+<header class="main-header">
+  <div class="header-left">
+    <a href="/home"><span class="header-title">Złotówa</span></a>
+  </div>
+
+  <div class="header-right">
+
+    <span class="header-user">
+      <% if (session && session.user) { %>
+        <%= session.user.name %>
+      <% } else { %>
+        Witaj!
+      <% } %>
+    </span>
+
+    <button onclick="window.location.href='/settings'" class="header-btn">⚙</button>
+    <button onclick="window.location.href='/logout'" class="header-btn">⏻</button>
+
+  </div>
+</header>

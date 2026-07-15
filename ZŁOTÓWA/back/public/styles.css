@@ -1,0 +1,467 @@
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
+/* Kolory retro */
+:root {
+  --bg: #E7DFD3;
+  --panel: #F4EDE4;
+  --text: #3B2F2F;
+  --text-dark: #1F1A1A;
+  --border: #B8AFA3;
+
+  --green: #4CAF50;
+  --blue:  #4A90E2;
+  --red:   #D9534F;
+}
+
+/* GLOBALNY PIXELOWY FONT */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Press Start 2P", monospace !important;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  padding: 20px;
+  padding-top: 110px;
+}
+
+/* Pixelowa korona */
+.pixel-crown {
+  font-size: 22px;
+  image-rendering: pixelated;
+  color: #D4AF37;
+  text-shadow: 0px 0px 2px #000;
+}
+
+/* ===== KARTA LOGOWANIA ===== */
+
+.login-card {
+  width: 100%;
+  max-width: 420px;
+  background: var(--panel);
+  padding: 40px 30px;
+  border: 4px solid var(--border);
+  box-shadow: 0 0 20px rgba(0,0,0,0.15);
+}
+
+.login-card h1 {
+  text-align: center;
+  margin-bottom: 35px;
+  font-size: 14px;
+}
+
+.login-card form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.login-card input {
+  width: 100%;
+  padding: 14px;
+  background: #FFF9F0;
+  border: 3px solid var(--border);
+  color: var(--text);
+  font-size: 12px;
+}
+
+.login-card input:focus {
+  border-color: var(--green);
+  outline: none;
+}
+
+.login-card button {
+  padding: 14px;
+  background: var(--green);
+  color: #fff;
+  border: 3px solid #2E7D32;
+  cursor: pointer;
+  font-size: 12px;
+  transition: 0.15s;
+}
+
+.login-card button:hover {
+  background: #43A047;
+  border-color: #1B5E20;
+}
+
+.login-card a {
+  display: inline-block;
+  margin-top: 25px;
+  color: var(--blue);
+  font-size: 12px;
+  text-decoration: none;
+  border-bottom: 2px solid var(--blue);
+  padding-bottom: 4px;
+}
+
+.login-card a:hover {
+  color: var(--red);
+  border-color: var(--red);
+}
+
+
+/* DODATNI BALANS */
+.balance.positive {
+  color: var(--green);              /* zielony */
+  text-shadow: 1px 1px 0px #1B5E20; /* pixel shadow */
+}
+
+/* UJEMNY BALANS */
+.balance.negative {
+  color: var(--red);                /* czerwony */
+  text-shadow: 1px 1px 0px #7A1E1B; /* pixel shadow */
+}
+
+/* ZERO BALANS */
+.balance.neutral {
+  color: var(--text-dark);
+  opacity: 0.8;
+}
+
+/* ===== RESPONSYWNOŚĆ ===== */
+
+@media (max-width: 420px) {
+  .login-card {
+    padding: 25px;
+  }
+  .login-card h1 {
+    font-size: 12px;
+  }
+}
+
+/* ===== LAYOUT STRONY ===== */
+
+.page-layout {
+  width: 100%;
+  max-width: 1400px;
+  margin: auto;
+  display: grid;
+  grid-template-columns: 1fr 2fr 1fr;
+  gap: 20px;
+  padding: 30px;
+}
+
+.right-column {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.create-room-btn {
+  padding: 14px 18px;
+  background: var(--blue);
+  color: #fff;
+  border: 3px solid #1B4F72;
+  font-size: 12px;
+  cursor: pointer;
+  transition: 0.15s;
+}
+
+.create-room-btn:hover {
+  background: #357ABD;
+  border-color: #0E3A5A;
+}
+
+.rooms-list {
+  background: var(--panel);
+  border: 4px solid var(--border);
+  padding: 25px;
+}
+
+.rooms-list h2 {
+  text-align: center;
+  font-size: 12px;
+  margin-bottom: 25px;
+}
+
+.rooms-ul {
+  list-style: none;
+}
+
+.room-item {
+  background: #FFF9F0;
+  border: 3px solid var(--border);
+  margin-bottom: 12px;
+  padding: 16px;
+  transition: 0.15s;
+}
+
+.room-item:hover {
+  border-color: var(--green);
+}
+
+.room-page .room-item:hover {
+  border: 3px solid var(--border);
+}
+
+.room-item a {
+  text-decoration: none;
+  font-size: 10px;
+  color: var(--text-dark);
+}
+
+.room-item a:hover {
+  color: var(--green);
+}
+
+/* ===== POPUP ===== */
+
+#popup-bg {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.5);
+  display: none;
+  z-index: 900;
+}
+
+.trans_pop {
+  display: none;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: var(--panel);
+  border: 4px solid var(--border);
+  padding: 30px;
+  min-width: 320px;
+  z-index: 1000;
+}
+
+.trans_pop input {
+  width: 100%;
+  padding: 10px;
+  background: #FFF9F0;
+  border: 3px solid var(--border);
+  margin-bottom: 15px;
+  font-size: 10px;
+}
+
+.trans_pop button {
+  padding: 12px;
+  background: var(--green);
+  color: #fff;
+  border: 3px solid #2E7D32;
+  cursor: pointer;
+  transition: 0.15s;
+  font-size: 10px;
+}
+
+.trans_pop button:hover {
+  background: #43A047;
+  border-color: #1B5E20;
+}
+
+/* ======== FORMULARZ PIXELOWY (checkboxy poprawione!) ======== */
+
+.user-list {
+  max-height: 200px;
+  overflow-y: auto;
+}
+
+.user-check {
+  display: flex;
+  justify-content: space-between; 
+  align-items: center;
+  cursor: pointer;
+}
+
+
+.user-check span {
+  font-size: 12px;
+  line-height: 26px; 
+  margin: 5px;
+}
+
+
+.user-check input[type="checkbox"] {
+  width: 26px;    
+  height: 26px;
+  border: 4px solid var(--border);
+  background: white;
+  appearance: none;
+  cursor: pointer;
+  position: relative;
+  margin: 5px;
+}
+
+
+.user-check input[type="checkbox"]:checked {
+  background: var(--green);
+  border-color: #2E7D32;
+}
+
+
+.user-check input[type="checkbox"]:checked::after {
+  content: "✔";
+  font-size: 14px;
+  color: white;
+  position: absolute;
+  top: -2px;
+  left: 4px;
+}
+
+.main-header {
+  width: 100%;
+  background: var(--red);
+  border-bottom: 4px solid #7A1E1B;
+  padding: 18px 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 2000;
+  box-shadow: 0px 4px 0px #5C1412;
+}
+
+/* Lewa strona - tytuł */
+.header-left .header-title {
+  font-size: 16px;
+  color: #FFF9F0;
+  text-shadow: 2px 2px 0px #000;
+}
+
+/* Prawa strona - user + przyciski */
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+/* Nazwa użytkownika */
+.header-user {
+  font-size: 12px;
+  background: #FFF9F0;
+  color: #3B2F2F;
+  border: 3px solid #7A1E1B;
+  padding: 8px 12px;
+}
+
+/* Retro pixelowe przyciski */
+.header-btn {
+  width: 42px;
+  height: 42px;
+  background: #FFF9F0;
+  border: 3px solid #7A1E1B;
+  color: #3B2F2F;
+  font-size: 16px;
+  cursor: pointer;
+  transition: 0.15s;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.header-btn:hover {
+  background: #F1E3D4;
+  border-color: #5C1412;
+}
+
+.pixel-icon {
+  image-rendering: pixelated;
+  fill: #3B2F2F; /* kolor ikonki (retro brąz) */
+}
+
+a {
+  text-decoration: none !important;  /* usuwa podkreślenie */
+  color: inherit !important;         /* kolor = kolor rodzica */
+}
+
+/* Dla tworzenia pokoju – wygląda jak pixel button, nie jak link */
+a.create-room-btn {
+  text-decoration: none !important;
+  color: #fff !important;
+}
+
+/* Dla klikanych pokoi – zachowuje styl room-item, nie link */
+.rooms-ul a {
+  text-decoration: none !important;
+  color: inherit !important;
+  display: block;           /* klikany cały element, nie tylko tekst */
+}
+
+.tran-line {
+  font-size: 12px;           
+  line-height: 18px;          
+  margin: 6px 0;              
+}
+
+.room-item .tran-line strong {
+  font-size: 12px;            
+  color: var(--text-dark);
+}
+
+.add-user-btn {
+  padding: 8px 12px;
+  background: #F2C94C;               
+  color: #3B2F2F !important;
+  border: 3px solid #A67C00;        
+  font-size: 8px;
+  cursor: pointer;
+  transition: 0.15s;
+  width: 20%;
+  text-align: center;
+  display: inline-block;
+  text-decoration: none !important;
+}
+
+.add-user-btn:hover {
+  background: #E5B93F;               
+  border-color: #7A5A00;
+}
+
+
+/* ===== MOBILE ===== */
+
+@media (max-width: 850px) {
+  body {
+    padding: 10px;
+    justify-content: flex-start;
+    align-items: flex-start;
+  }
+
+  .page-layout {
+    grid-template-columns: 1fr;
+    gap: 15px;
+    padding: 10px;
+  }
+
+  .right-column {
+    align-items: stretch !important;
+  }
+
+  .create-room-btn {
+    width: 100%;
+    text-align: center;
+  }
+
+ 
+  .rooms-list {
+    padding: 20px;
+  }
+
+  .rooms-list h2 {
+    font-size: 10px;
+  }
+
+  .room-item {
+    padding: 14px;
+  }
+
+  .room-item a {
+    font-size: 8px;
+  }
+}

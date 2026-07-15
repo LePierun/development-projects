@@ -1,0 +1,305 @@
+API DOKUMENTACJA
+Aplikacja: System zarządzania pokojami i rozliczeniami
+Base URL: http://localhost:3000
+
+---
+
+AUTORYZACJA
+
+* Sesja (express-session)
+* Po zalogowaniu serwer ustawia cookie `connect.sid`
+* Wymagana dla wszystkich endpointów poza:
+
+  * GET /
+  * POST /login
+  * POST /register
+
+---
+
+1. ROOT
+
+GET /
+
+Opis:
+Sprawdzenie działania API
+
+Response:
+{
+success: true,
+message: "API działa",
+endpoints: {...}
+}
+
+---
+
+2. REJESTRACJA
+
+POST /register
+
+Body:
+{
+"name": "string",
+"email": "string",
+"password": "string"
+}
+
+Response:
+201:
+{
+success: true,
+message: "Użytkownik został zarejestrowany",
+userId: number
+}
+
+Błędy:
+400 - brak danych
+409 - email istnieje
+
+---
+
+3. LOGOWANIE
+
+POST /login
+
+Body:
+{
+"email": "string",
+"password": "string"
+}
+
+Response:
+{
+success: true,
+message: "Zalogowano pomyślnie",
+user: {
+id: number,
+name: string
+}
+}
+
+Błędy:
+400 - brak danych
+401 - błędne dane
+
+---
+
+4. WYLOGOWANIE
+
+GET /logout
+
+Response:
+{
+success: true,
+message: "Wylogowano pomyślnie"
+}
+
+---
+
+5. DANE UŻYTKOWNIKA
+
+GET /me
+
+Response:
+{
+success: true,
+user: {
+id: number,
+name: string
+}
+}
+
+---
+
+6. LISTA POKOI
+
+GET /home
+
+Response:
+{
+success: true,
+user: {...},
+rooms: [
+{
+R_ID_Room: number,
+R_Name: string,
+R_Date_created: string
+}
+]
+}
+
+---
+
+7. TWORZENIE POKOJU
+
+POST /new_room
+
+Body:
+{
+"name": "string"
+}
+
+Response:
+201:
+{
+success: true,
+message: "Pokój został utworzony",
+roomId: number
+}
+
+Błędy:
+400 - brak nazwy
+500 - błąd serwera
+
+---
+
+8. SZCZEGÓŁY POKOJU
+
+GET /room/:id
+
+Parametry:
+
+* id (number)
+
+Response:
+{
+success: true,
+room: {...},
+users: [
+{
+U_ID_User: number,
+U_Name: string,
+balance: number
+}
+]
+}
+
+Błędy:
+404 - pokój nie istnieje
+
+---
+
+9. DODAWANIE UŻYTKOWNIKA DO POKOJU
+
+POST /new_user_in_room/:id
+
+Body:
+{
+"name": "string"
+}
+
+Response:
+201:
+{
+success: true,
+message: "Użytkownik został dodany do pokoju"
+}
+
+Błędy:
+400 - brak nazwy
+404 - użytkownik nie istnieje
+409 - użytkownik już dodany
+
+---
+
+10. DODAWANIE TRANSAKCJI
+
+POST /new_transaction/:id
+
+Body:
+{
+"desc": "string",
+"amount": number,
+"users": [number]
+}
+
+Opis:
+
+* Kwota dzielona równo między użytkowników
+* Tworzone są osobne wpisy dla każdego użytkownika
+
+Response:
+201:
+{
+success: true,
+message: "Transakcje zostały dodane",
+totalAmount: number,
+splitAmount: number,
+borrowersCount: number
+}
+
+Błędy:
+400 - błędne dane
+500 - błąd bazy
+
+---
+
+11. LISTA TRANSAKCJI
+
+GET /room/:id/transactions
+
+Response:
+{
+success: true,
+transactions: [
+{
+T_ID: number,
+T_Amount: number,
+T_Description: string,
+CreditorName: string,
+BorrowerName: string
+}
+]
+}
+
+---
+
+12. ZMIANA HASŁA
+
+POST /new_password
+
+Body:
+{
+"old_password": "string",
+"password": "string"
+}
+
+Response:
+{
+success: true,
+message: "Hasło zostało zmienione"
+}
+
+Błędy:
+400 - brak danych
+401 - złe stare hasło
+404 - użytkownik nie istnieje
+
+---
+
+13. SETTINGS
+
+GET /settings
+
+Response:
+{
+success: true,
+availableActions: [
+{
+method: "POST",
+endpoint: "/new_password",
+fields: ["old_password", "password"]
+}
+]
+}
+
+---
+
+KODY STATUSÓW
+
+200 - OK
+201 - Created
+400 - Bad Request
+401 - Unauthorized
+404 - Not Found
+409 - Conflict
+500 - Server Error

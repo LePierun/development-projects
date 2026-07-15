@@ -1,0 +1,58 @@
+<head>
+    <meta charset="UTF-8">
+    <title>Transakcje</title>
+    <link rel="stylesheet" href="/styles.css">
+</head>
+
+<body class="room-page">
+
+<%- include("partials/header") %>
+
+<div class="page-layout">
+
+    <div class="left-column"></div>
+
+    <div class="rooms-list">
+        <h2>Transakcje:</h2>
+
+        <ul class="rooms-ul">
+
+            <% if (!trans || trans.length === 0) { %>
+                <li class="room-item">Nie masz żadnych transakcji</li>
+            <% } else { %>
+
+                <% trans.forEach(tran => { %>
+
+                    <li class="room-item">
+
+                        <div class="tran-line"><strong>ID:</strong> <%= tran.T_ID_Transaction %></div>
+                        <div class="tran-line"><strong>Dłużnik:</strong> <%= tran.BorrowerName %></div>
+                        <div class="tran-line"><strong>Wierzyciel:</strong> <%= tran.CreditorName %></div>
+
+                        <div class="tran-line">
+                          <strong>Kwota:</strong>
+                          <% if (tran.T_Amount > 0) { %>
+                            <span class="balance positive">+<%= tran.T_Amount.toFixed(2) %> zł</span>
+                          <% } else { %>
+                            <span class="balance negative"><%= tran.T_Amount.toFixed(2) %> zł</span>
+                          <% } %>
+                        </div>
+
+                        <div class="tran-line"><strong>Opis:</strong> <%= tran.T_Description %></div>
+                        <div class="tran-line"><strong>Data:</strong> <%= tran.T_Date_created %></div>
+
+                    </li>
+
+                <% }); %>
+
+            <% } %>
+
+        </ul>
+    </div>
+
+    <div class="right-column">
+    </div>
+
+</div>
+
+</body>

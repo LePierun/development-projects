@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="pl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <canvas id="Matrix"></canvas>
+    <header>
+      <div class="hedContener">
+        <div>
+          <h1>RETROBYTE</h1>
+          <h3>Kiedy piksele znaczyły więcej niż RTX</h3>
+        </div>
+        <nav>
+          <a href="main.html">
+            <div class="specialHoverGreen btn">Strona główna</div>
+          </a>
+          <a href="newsletterSubmit.html">
+            <div class="specialHoverGreen btn">Newsletter</div>
+          </a>
+          <a href="contact.html">
+            <div class="specialHoverGreen btn">Kontak</div>
+          </a>
+        </nav>
+      </div>
+    </header>
+    <section>
+      <div class="centerer">
+        <form id="newsletterSubmit" class="col">
+          <div>
+            <label for="email">Twój e-mail do newslettera:</label>
+            <input
+              type="email"
+              id="email"
+              placeholder="retrofan@example.com"
+              required
+            />
+          </div>
+          <div>
+            <label for="freq">Chce dostawać newsy: </label>
+            <select id="freq" name="freq">
+              <option value="weekly">Raz w tygodniu</option>
+              <option value="biweekly">Co dwa tygodnie</option>
+              <option value="monthly">Raz w miesiącu</option>
+              <option value="rare">Tylko ważne informacje</option>
+              <option value="never">Nigdy</option>
+            </select>
+          </div>
+
+          <div>
+            <p>
+              Zaznaczając to pole, zapisuję się do newslettera RetroByte i
+              zgadzam się na otrzymywanie wiadomości o nowych artykułach,
+              ciekawostkach ze świata retro, zapowiedziach oraz treściach
+              przygotowanych przez redakcję. Wiem, że w każdej chwili mogę się
+              wypisać — wystarczy kliknąć link rezygnacji w stopce wiadomości
+              lub napisać na [adres e-mail redakcji]. Administratorem danych
+              jest [Nazwa podmiotu prowadzącego RetroByte], a moje dane będą
+              przetwarzane zgodnie z polityką prywatności.
+            </p>
+            <label for="accept">
+              Akceptuję zasady newslettera RetroByte.
+            </label>
+            <input id="accept" type="checkbox" required />
+          </div>
+
+          <input
+            type="submit"
+            class="btn specialHoverGreen"
+            value="Zapisz się"
+          />
+        </form>
+      </div>
+    </section>
+    <section></section>
+
+    <footer>
+      <div class="centerer">
+        <div class="row">
+          <div class="row">
+            <div>
+              <h3>Dowiedz sie więcej</h3>
+              <ul>
+                <li><a href="main.html">Strona główna</a></li>
+                <li><a href="tempArticle.html">Artykuły</a></li>
+                <li><a href="main.html">Recenzje</a></li>
+                <li><a href="contact.html">Kontakt</a></li>
+              </ul>
+            </div>
+            <div>
+              <h3>Social Media</h3>
+              <ul>
+                <li>
+                  <a href="https://www.facebook.com" target="_blank"
+                    >Facebook</a
+                  >
+                </li>
+                <li>
+                  <a href="https://www.instagram.com" target="_blank"
+                    >Instagram</a
+                  >
+                </li>
+                <li>
+                  <a href="https://pl.pinterest.com/" target="_blank"
+                    >Pinterest</a
+                  >
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div>
+            <h3>Zapisz sie na newsletter</h3>
+
+            <a href="newsletterSubmit.html">
+              <div class="specialHoverGreen btn">Zapisz się</div>
+            </a>
+          </div>
+        </div>
+      </div>
+      <h4>© 2025-2025 Redakcja RETROBYTE. All rights reserved</h4>
+    </footer>
+    <script src="scrip.js"></script>
+  </body>
+</html>

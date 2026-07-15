@@ -1,0 +1,36 @@
+<head>
+    <meta charset="UTF-8">
+    <title>Ustawienia</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <%- include("partials/header") %>
+<div class="login-card">
+    <h1>Zmiana hasła</h1>
+<form action="/new_password" method="POST">
+    <input type="password" id="old_password" name="old_password" placeholder="Hasło" required>
+    <input type="password" id="password" name="password" placeholder="Nowe hasło" required>
+    <input type="password" id="password2" name="password2" placeholder="Powtórz nowe hasło" required>
+
+    <button type="submit">Zmień hasło</button>
+</form>
+
+<a href="/home">Powrót</a>
+</div>
+</body>
+
+<script>
+document.querySelector("form").addEventListener("submit", function(e) {
+    const pass = document.getElementById("password");
+    const pass2 = document.getElementById("password2");
+
+    if (pass.value !== pass2.value) {
+        e.preventDefault();
+        pass2.style.border = "3px solid var(--red)";
+
+        return false;
+    } else {
+        pass2.style.border = "3px solid var(--border)";
+    }
+});
+</script>

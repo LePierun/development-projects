@@ -1,0 +1,37 @@
+<head>
+    <meta charset="UTF-8">
+    <title>Rejestracja</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <%- include("partials/header") %>
+<div class="login-card">
+    <h1>Rejestracja</h1>
+<form action="/register" method="POST">
+    <input type="text" name="name" placeholder="Imię" required>
+    <input type="email" name="email" placeholder="E-mail" required>
+    <input type="password" id="password" name="password" placeholder="Hasło" required>
+    <input type="password" id="password2" name="password2" placeholder="Powtórz hasło" required>
+
+    <button type="submit">Zarejestruj</button>
+</form>
+
+<a href="/login">Logowanie</a>
+</div>
+</body>
+
+<script>
+document.querySelector("form").addEventListener("submit", function(e) {
+    const pass = document.getElementById("password");
+    const pass2 = document.getElementById("password2");
+
+    if (pass.value !== pass2.value) {
+        e.preventDefault();
+        pass2.style.border = "3px solid var(--red)";
+
+        return false;
+    } else {
+        pass2.style.border = "3px solid var(--border)";
+    }
+});
+</script>
