@@ -2,7 +2,7 @@
 
 Repozytorium zawiera projekty edukacyjne wykonane podczas nauki tworzenia stron internetowych, aplikacji frontendowych oraz aplikacji full-stack.
 
-Najbardziej rozbudowanym projektem w repozytorium jest **ZŁOTÓWA** — aplikacja mobilna do rozliczania wspólnych wydatków, połączona z backendem w Node.js i bazą SQLite.
+
 
 ## Projekty
 
@@ -30,6 +30,9 @@ Projekt składa się z:
 - wyświetlanie historii transakcji,
 - zmiana hasła i wylogowanie.
 
+#### Podgląd
+<img src="screenshots\zlotówa.gif" alt="podgląd złotówa" width="300"/>
+
 #### Technologie
 
 **Frontend**
@@ -50,13 +53,6 @@ Projekt składa się z:
 - bcrypt
 - SQLite
 
-#### Struktura
-
-```text
-ZŁOTÓWA/
-├── front/    # aplikacja mobilna React Native / Expo
-└── back/     # serwer Express i baza SQLite
-```
 
 #### Uruchomienie backendu
 
@@ -105,6 +101,10 @@ Projekt frontendowy przedstawiający wieloetapowy formularz rezerwacji pobytu.
 - wybór opiekuna dla dziecka,
 - usuwanie i zmiana kolejności wierszy w tabeli.
 
+
+#### Podgląd
+<img src="screenshots\form.gif" alt="podgląd złotówa"/>
+
 #### Technologie
 
 - HTML
@@ -120,7 +120,6 @@ Otwórz plik:
 Formularz/index.html
 ```
 
-w przeglądarce lub użyj rozszerzenia Live Server.
 
 > Formularz działa po stronie przeglądarki i nie przesyła danych nigdzie dalej.
 
@@ -139,7 +138,9 @@ Prosta wielostronicowa strona internetowa o tematyce gier retro.
 - nawigacja pomiędzy podstronami,
 - podstawowa responsywność,
 - efekty CSS,
-- animowane tło wykonane przy użyciu Canvas API.
+- animowane tło.
+#### Podgląd
+<img src="screenshots\retrobyte.gif" alt="podgląd złotówa"/>
 
 #### Technologie
 
@@ -153,22 +154,6 @@ Otwórz plik:
 
 ```text
 RETROBYTE/main.html
-```
-
-w przeglądarce lub użyj rozszerzenia Live Server.
-
-> Formularz newslettera jest elementem demonstracyjnym i nie zapisuje danych.
-
-## Struktura repozytorium
-
-```text
-development-projects/
-├── Formularz/
-├── RETROBYTE/
-├── ZŁOTÓWA/
-│   ├── back/
-│   └── front/
-└── README.md
 ```
 
 ## Charakter repozytorium
